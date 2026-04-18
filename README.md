@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Domain Scraper Listing Platform
 
-## Getting Started
+A robust domain scraping system that extracts dropped domains from ExpiredDomains.net with precision filters. Built with Next.js 16 (App Router), Playwright, Prisma, and PostgreSQL.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Automated Scraping:** Daily extraction of dropped `.com` domains using Playwright Stealth.
+- **Precision Filters:** Automatic filtering for name length (≤12), no numbers/hyphens, and history (ABY ≥ 2).
+- **Interactive Dashboard:** Unified view with live search, sortable columns, and pagination.
+- **Scrape Tracking:** Monitor the history and status of scrape runs directly in the UI.
+- **API Access:** REST API for domain data and manual scrape triggers.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Scraper:** Playwright (Stealth mode)
+- **Database:** PostgreSQL via Prisma ORM
+- **Styling:** Tailwind CSS v4
+- **Automation:** `node-cron`
+
+## Setup Instructions
+
+### 1. Prerequisites
+- Node.js 18+
+- PostgreSQL database
+
+### 2. Environment Variables
+Copy `.env.example` to `.env` and fill in your credentials:
+```env
+DATABASE_URL=postgresql://...
+EXPIREDDOMAINS_EMAIL=your@email.com
+EXPIREDDOMAINS_PASSWORD=yourpassword
+SCRAPE_SECRET=your-random-token
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Database Setup
+```bash
+npx prisma migrate dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Running the Scraper
+#### Manual (Terminal):
+```bash
+# Recommended for manual testing
+npx ts-node scripts/scrape.ts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Manual (API):
+```bash
+curl -X POST http://localhost:3000/api/scrape -H "x-scrape-secret: YOUR_SECRET"
+```
 
-## Learn More
+### 5. Development Server
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Anti-Bot Design
+This system uses several strategies to avoid detection:
+- **Stealth Mode:** Playwright extra stealth plugin.
+- **Session Persistence:** Cookies are stored in `lib/scraper/session.json` to prevent repeated logins.
+- **Human Mimicry:** Random 1–3s delays between navigation and clicks to emulate real user behavior.
+- **Headless Options:** Can be toggled in `lib/scraper/browser.ts`.

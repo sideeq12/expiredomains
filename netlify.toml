@@ -1,0 +1,15 @@
+[build]
+  command = "npm run build"
+  # Let the @netlify/plugin-nextjs handle the publish directory automatically
+  # publish = ".next" 
+
+[build.environment]
+  NODE_VERSION = "20"
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  node_bundler = "esbuild"
+  timeout = 26 # Max timeout for standard Netlify Functions

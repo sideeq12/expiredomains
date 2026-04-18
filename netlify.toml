@@ -12,4 +12,3 @@
 
 [functions]
   node_bundler = "esbuild"
-  timeout = 26 # Max timeout for standard Netlify Functions

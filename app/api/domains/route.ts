@@ -25,6 +25,32 @@ export async function GET(request: NextRequest) {
       ],
     };
 
+    // TEMPORARY HARDCODED DATA
+    const realNames = [
+      "echoflow.com", "luminatech.com", "apexventures.com", "nexusholdings.com",
+      "cloudsync.net", "dataforge.io", "quantummind.com", "stellarpath.org",
+      "vitalityhealth.com", "greenleaffarms.com", "urbanpulse.com", "cyberguard.net",
+      "aerodynamics.com", "purewater.io", "silverline.com", "smartcity.net",
+      "fintechsolutions.com", "globalreach.org", "pioneerventures.com", "digitalhorizon.com"
+    ];
+
+    const hardcodedDomains = realNames.map((name, i) => ({
+        id: (i + 1).toString(),
+        name: name,
+        tld: name.substring(name.lastIndexOf('.')),
+        length: name.split('.')[0].length,
+        aby: i % 5,
+        wby: i % 3,
+        backlinks: i * 15,
+        dropDate: new Date().toISOString(),
+        scrapedAt: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
+    }));
+
+    const domains = hardcodedDomains;
+    const total = hardcodedDomains.length;
+
+    /*
     const [domains, total] = await Promise.all([
       prisma.domain.findMany({
         where,
@@ -34,6 +60,7 @@ export async function GET(request: NextRequest) {
       }),
       prisma.domain.count({ where }),
     ]);
+    */
 
     return NextResponse.json({
       data: domains,

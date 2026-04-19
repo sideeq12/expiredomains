@@ -82,7 +82,7 @@ export default function HomePage() {
     <main className="flex-1">
       {/* Hero section */}
       <section className="relative overflow-hidden border-b border-white/5 bg-gray-950">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-r from-violet-600/20 via-indigo-600/20 to-purple-600/20 blur-3xl" />
+        <div className="absolute inset-0 bg-violet-950/20" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 lg:px-8">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-sm font-medium text-violet-300">
@@ -99,10 +99,7 @@ export default function HomePage() {
             )}
           </div>
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            Domain{" "}
-            <span className="bg-gradient-to-r from-violet-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Scraper Dashboard
-            </span>
+            Latest <span className="text-violet-500">Expired Domains</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-400">
             Monitor and explore dropped domains with precision filters.

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Expired Domains — Find Cheap, Brandable & Aged Expired Domains",
+  title: "Latest Expired Domains — Fast Search & Filters",
   description:
     "Browse expired domains sorted by category. Find cheap, brandable, and aged expired domain names ready for registration.",
 };
@@ -37,7 +37,7 @@ export default function RootLayout({
         <footer className="border-t border-white/5 bg-gray-950">
           <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
             <p className="text-center text-sm text-gray-600">
-              © {new Date().getFullYear()} Expired Domains. All rights reserved.
+              © {new Date().getFullYear()} Latest Expired Domains. All rights reserved.
             </p>
           </div>
         </footer>

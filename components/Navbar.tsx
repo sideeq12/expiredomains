@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 border-b border-white/10 bg-gray-950/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/25 transition-shadow group-hover:shadow-violet-500/40">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-600 shadow-lg shadow-violet-500/20 transition-shadow group-hover:bg-violet-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -16,7 +16,7 @@ export default function Navbar() {
             </svg>
           </div>
           <span className="text-xl font-bold tracking-tight text-white">
-            Expired Domains
+            Latest Expired Domains
           </span>
         </Link>
 
